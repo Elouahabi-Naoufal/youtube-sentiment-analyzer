@@ -1,0 +1,13 @@
+params:
+  data:
+    raw_path: data/raw/comments.csv
+    processed_path: data/processed/comments.csv
+  features:
+    test_size: 0.2
+    random_state: 42
+  model:
+    type: logistic_regression
+    max_iter: 1000
+  mlflow:
+    experiment_name: yt-sentiment
+    tracking_uri: ./mlruns

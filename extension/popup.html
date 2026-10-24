@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>YouTube Sentiment</title>
+  <style>
+    body { font-family: system-ui, sans-serif; width: 320px; padding: 12px; }
+    button { width: 100%; padding: 8px; margin-top: 8px; cursor: pointer; }
+    #result { margin-top: 12px; font-size: 14px; }
+    .pos { color: #1a7f37; }
+    .neg { color: #cf222e; }
+  </style>
+</head>
+<body>
+  <h3>YouTube Sentiment</h3>
+  <p>Paste a comment or select text on the page:</p>
+  <textarea id="text" rows="4" style="width:100%"></textarea>
+  <button id="analyze">Analyze</button>
+  <div id="result"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

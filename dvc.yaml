@@ -1,0 +1,39 @@
+stages:
+  prepare:
+    cmd: python src/data/prepare.py
+    deps:
+      - src/data/prepare.py
+      - data/raw/comments.csv
+    params:
+      - params.data.raw_path
+      - params.data.processed_path
+    outs:
+      - data/processed/comments.csv
+
+  featurize:
+    cmd: python src/features/build_features.py
+    deps:
+      - src/features/build_features.py
+      - data/processed/comments.csv
+    params:
+      - params.features.test_size
+      - params.features.random_state
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+
+  train:
+    cmd: python src/models/train.py
+    deps:
+      - src/models/train.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+    params:
+      - params.model.type
+      - params.model.max_iter
+      - params.mlflow.experiment_name
+      - params.mlflow.tracking_uri
+    outs:
+      - models/model.pkl
+    metrics:
+      - metrics.json
